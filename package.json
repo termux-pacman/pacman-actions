@@ -1,29 +1,31 @@
 {
-  "name": "pacman-tool-repo",
-  "version": "2.0",
-  "description": "Tools for working with pacman db of repo.",
+  "name": "pacman-actions",
+  "version": "2.4",
+  "description": "Installing pacman and its tools on Ubuntu24 environment github actions",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/termux-pacman/pacman-tool-repo.git"
+    "url": "git+https://github.com/termux-pacman/pacman-actions.git"
   },
   "keywords": [
     "actions",
     "repo-add",
     "repo-remove",
+    "makepkg",
     "pacman"
   ],
   "author": "termux-pacman",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/termux-pacman/pacman-tool-repo/issues"
+    "url": "https://github.com/termux-pacman/pacman-actions/issues"
   },
-  "homepage": "https://github.com/termux-pacman/pacman-tool-repo#readme",
+  "homepage": "https://github.com/termux-pacman/pacman-actions#readme",
   "dependencies": {
     "@actions/core": "^1.10.1",
-    "@actions/exec": "^1.1.1"
+    "@actions/exec": "^1.1.1",
+    "platform": "^1.3.6"
   }
 }

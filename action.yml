@@ -1,8 +1,8 @@
-name: pacman-tool-repo
-description: 'Tools for working with pacman db of repo.'
+name: pacman-actions
+description: 'Installing pacman and its tools on Ubuntu24 environment github actions'
 author: Termux Pacman
 branding:
-  icon: 'database'
+  icon: 'tool'
   color: 'blue'
 runs:
   using: 'node20'
