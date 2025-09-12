@@ -3,7 +3,7 @@
 const exec = require('@actions/exec');
 const core = require('@actions/core');
 
-function error(message) {
+function returnError(message) {
 	core.setFailed(message);
 	process.exit(1);
 }
@@ -16,9 +16,8 @@ async function installPkg(pkgname) {
 			await exec.exec("sudo apt install " + pkgname + " -y");
 			break;
 		} catch (error) {
-			if (attempts > 3) {
-				error("Something went wrong :/");
-			}
+			if (attempts > 3)
+				returnError("Something went wrong :/");
 			attempts += 1;
 			continue;
 		}
@@ -35,15 +34,10 @@ async function start() {
 		}
 	});
 	if (myOutput.split("=").at(-1).split(".").at(0) != "24") {
-		error("old version of ubuntu, must be version 24 of ubuntu");
+		returnError("Old version of ubuntu, must be version 24 of ubuntu");
 	}
 
-	await installPkg("libarchive-tools");
-
-	await exec.exec("sudo su -c \"echo 'deb http://archive.ubuntu.com/ubuntu/ oracular universe' > /etc/apt/sources.list.d/oracular.list\"");
-	await exec.exec("sudo su -c \"echo 'deb-src http://archive.ubuntu.com/ubuntu/ oracular universe' >> /etc/apt/sources.list.d/oracular.list\"");
-
-	await installPkg("pacman-package-manager");
+	await installPkg("libarchive-tools pacman-package-manager");
 }
 
 start();
