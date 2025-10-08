@@ -25,6 +25,7 @@ async function installPkg(pkgname) {
 }
 
 async function start() {
+	// Checking the Ubuntu version
 	let myOutput = '';
 	await exec.exec("grep", ["^DISTRIB_RELEASE=", "/etc/lsb-release"], {
 		listeners: {
@@ -37,6 +38,11 @@ async function start() {
 		returnError("Old version of ubuntu, must be version 24 of ubuntu");
 	}
 
+	// Disabling the man-db setting
+	await exec.exec("bash -c \"echo set man-db/auto-update false | sudo debconf-communicate\"");
+	await exec.exec("sudo dpkg-reconfigure man-db");
+
+	// Installing libarchive tools and pacman
 	await installPkg("libarchive-tools pacman-package-manager");
 }
 
