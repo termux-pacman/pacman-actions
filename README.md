@@ -11,7 +11,7 @@ jobs:
     name: Example
     steps:
       - uses: actions/checkout@v4
-      - uses: termux-pacman/pacman-actions@v2.4
+      - uses: termux-pacman/pacman-actions@v2.5
       - run: |
           pacman --help
           makepkg --help

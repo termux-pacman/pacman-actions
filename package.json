@@ -1,6 +1,6 @@
 {
   "name": "pacman-actions",
-  "version": "2.4",
+  "version": "2.5",
   "description": "Installing pacman and its tools on Ubuntu24 environment github actions",
   "main": "index.js",
   "scripts": {
